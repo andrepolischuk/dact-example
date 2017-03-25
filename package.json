@@ -1,0 +1,65 @@
+{
+  "name": "recd-example",
+  "version": "0.0.0",
+  "description": "An example of recd application",
+  "main": "index.js",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack -p",
+    "start": "cross-env NODE_ENV=development webpack-dev-server -d --hot",
+    "test": "xo"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andrepolischuk/recd-example.git"
+  },
+  "author": "Andrey Polischuk <me@andrepolischuk.com> (https://andrepolischuk.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/andrepolischuk/recd-example/issues"
+  },
+  "homepage": "https://github.com/andrepolischuk/recd-example",
+  "dependencies": {
+    "bel": "^4.5.1",
+    "isomorphic-fetch": "^2.2.1",
+    "nanomorph": "^4.0.2",
+    "recd": "^0.1.1"
+  },
+  "devDependencies": {
+    "babel-loader": "^6.2.4",
+    "babel-plugin-async-to-promises": "^1.0.5",
+    "babel-plugin-transform-class-properties": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.8.0",
+    "babel-preset-es2015": "^6.6.0",
+    "babel-register": "^6.24.0",
+    "cross-env": "^1.0.7",
+    "css-loader": "^0.23.1",
+    "postcss-cssnext": "^2.5.2",
+    "postcss-loader": "^0.9.1",
+    "style-loader": "^0.13.1",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2",
+    "xo": "^0.18.0"
+  },
+  "babel": {
+    "presets": [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "async-to-promises",
+      "transform-object-rest-spread",
+      "transform-class-properties"
+    ]
+  },
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "space": true,
+    "semicolon": false
+  }
+}
