@@ -1,12 +1,12 @@
-# recd-example
+# dact-example
 
-> An example of recd application
+> An example of dact application
 
 ## Install
 
 ```sh
-git clone https://github.com/andrepolischuk/recd-example
-cd recd-example
+git clone https://github.com/andrepolischuk/dact-example
+cd dact-example
 npm install
 ```
 
@@ -30,7 +30,7 @@ npm run build
 
 ## Under the hood
 
-* [recd](https://github.com/andrepolischuk/recd)
+* [dact](https://github.com/andrepolischuk/dact)
 * [bel](https://github.com/shama/bel)
 * [nanomorph](https://github.com/yoshuawuyts/nanomorph)
 * [webpack](https://github.com/webpack/webpack)

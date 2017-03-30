@@ -1,7 +1,7 @@
 {
-  "name": "recd-example",
+  "name": "dact-example",
   "version": "0.0.0",
-  "description": "An example of recd application",
+  "description": "An example of dact application",
   "main": "index.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack -p",
@@ -10,19 +10,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andrepolischuk/recd-example.git"
+    "url": "git+https://github.com/andrepolischuk/dact-example.git"
   },
   "author": "Andrey Polischuk <me@andrepolischuk.com> (https://andrepolischuk.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/andrepolischuk/recd-example/issues"
+    "url": "https://github.com/andrepolischuk/dact-example/issues"
   },
-  "homepage": "https://github.com/andrepolischuk/recd-example",
+  "homepage": "https://github.com/andrepolischuk/dact-example",
   "dependencies": {
     "bel": "^4.5.1",
+    "dact": "^0.2.0",
     "isomorphic-fetch": "^2.2.1",
-    "nanomorph": "^4.0.2",
-    "recd": "^0.1.1"
+    "nanomorph": "^4.0.2"
   },
   "devDependencies": {
     "babel-loader": "^6.2.4",
