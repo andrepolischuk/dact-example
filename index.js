@@ -35,7 +35,7 @@ const deleteUser = store.transform((login, pull) => {
   }
 })
 
-function submit(event) {
+function submit (event) {
   const {value} = event.target.querySelector('input')
 
   if (value) {
@@ -45,7 +45,7 @@ function submit(event) {
   event.preventDefault()
 }
 
-function userList(users) {
+function userList (users) {
   return users.map(user => html`
     <p>
       <a href="${user.html_url}">${user.name}</a>
@@ -55,7 +55,7 @@ function userList(users) {
   `)
 }
 
-function app(data) {
+function app (data) {
   return html`
     <div class="${data.fetching ? styles.fetching : styles.normal}">
       <form onsubmit=${submit}>
