@@ -38,7 +38,7 @@ npm run build
 * [css modules](https://github.com/css-modules/css-modules)
 * [postcss](https://github.com/postcss/postcss)
 * [cssnext](https://github.com/MoOx/postcss-cssnext)
-* [XO](https://github.com/sindresorhus/xo)
+* [standard style](https://github.com/feross/standard)
 
 ## License
 
