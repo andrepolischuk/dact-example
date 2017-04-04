@@ -20,7 +20,7 @@
   "homepage": "https://github.com/andrepolischuk/dact-example",
   "dependencies": {
     "bel": "^4.5.1",
-    "dact": "^0.2.0",
+    "dact": "https://github.com/andrepolischuk/dact/archive/master.tar.gz",
     "isomorphic-fetch": "^2.2.1",
     "nanomorph": "^4.0.2"
   },

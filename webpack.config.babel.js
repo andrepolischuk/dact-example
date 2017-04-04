@@ -31,7 +31,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
+        include: /node_modules/,
         use: [
           'babel-loader'
         ]
@@ -51,13 +51,11 @@ module.exports = {
       }),
       new webpack.optimize.UglifyJsPlugin({
         compress: {
-          /* eslint-disable camelcase */
           pure_getters: true,
           unsafe: true,
           unsafe_comps: true,
           screw_ie8: true,
           warnings: false
-          /* eslint-enable camelcase */
         }
       }),
       new webpack.NoEmitOnErrorsPlugin()

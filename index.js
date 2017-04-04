@@ -4,76 +4,102 @@ import createData from 'dact'
 import fetch from 'isomorphic-fetch'
 import styles from './styles.css'
 
-const store = createData({
+const initial = {
   users: [],
+  error: null,
   fetching: false
-})
+}
 
-const setFetching = store.transform(fetching => ({fetching}))
+const data = createData(initial)
 
-const getUser = store.transform(async (login, pull) => {
-  setFetching(true)
+async function addUser (login, data) {
+  const exists = data.state.users.find(us => us.login === login)
+
+  if (exists) {
+    data.emit(handleError, `${login} already exists`)
+    return
+  }
+
+  data.emit({
+    error: null,
+    fetching: true
+  })
 
   const response = await fetch(`https://api.github.com/users/${login}`)
   const user = await response.json()
-  const users = pull().users.filter(us => us.login !== login)
 
-  return {
+  data.emit({
     fetching: false,
     users: [
-      ...users,
+      ...data.state.users,
       user
     ]
-  }
-})
+  })
+}
 
-const deleteUser = store.transform((login, pull) => {
-  const users = pull().users.filter(us => us.login !== login)
+function deleteUser (login, data) {
+  const users = data.state.users.filter(us => us.login !== login)
 
   return {
     users
   }
-})
-
-function submit (event) {
-  const {value} = event.target.querySelector('input')
-
-  if (value) {
-    getUser(value)
-  }
-
-  event.preventDefault()
 }
 
-function userList (users) {
+function handleError (error) {
+  return {
+    error
+  }
+}
+
+function errorMessage (error, emit) {
+  return error && html`
+    <p class="${styles.error}">
+      ${error}
+     <button type="button" onclick=${() => emit(handleError, null)}>Close</button>
+    </p>
+  `
+}
+
+function userList (users, emit) {
   return users.map(user => html`
     <p>
       <a href="${user.html_url}">${user.name}</a>
       <small>${user.login}</small>
-      <button onclick=${() => deleteUser(user.login)}>Delete</button>
+      <button onclick=${() => emit(deleteUser, user.login)}>Delete</button>
     </p>
   `)
 }
 
-function app (data) {
+function submit (event, emit) {
+  const {value} = event.target.querySelector('input')
+
+  event.preventDefault()
+
+  if (value) {
+    emit(addUser, value)
+  }
+}
+
+function app (state, emit) {
   return html`
-    <div class="${data.fetching ? styles.fetching : styles.normal}">
-      <form onsubmit=${submit}>
+    <div class="${state.fetching ? styles.fetching : styles.normal}">
+      <form onsubmit=${(event) => submit(event, emit)}>
         <input type="text" placeholder="Type github username..." tabindex="0" autofocus />
         <button type="submit">Add</button>
       </form>
-      ${userList(data.users)}
+      ${errorMessage(state.error, emit)}
+      ${userList(state.users, emit)}
     </div>
   `
 }
 
 const root = document.getElementById('root')
 
-store.subscribe(data => {
+data.subscribe(() => {
   const tree = root.lastChild
-  const nextTree = app(data)
+  const nextTree = app(data.state, data.emit)
 
   root.replaceChild(morph(tree, nextTree), tree)
 })
 
-root.appendChild(app(store.pull()))
+root.appendChild(app(data.state, data.emit))
