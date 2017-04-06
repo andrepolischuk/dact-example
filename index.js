@@ -1,6 +1,7 @@
 import html from 'bel'
 import morph from 'nanomorph'
 import createData from 'dact'
+import log from 'dact-log'
 import fetch from 'isomorphic-fetch'
 import styles from './styles.css'
 
@@ -10,7 +11,7 @@ const initial = {
   fetching: false
 }
 
-const data = createData(initial)
+const data = createData(initial, log)
 
 async function addUser (login, data) {
   const exists = data.state.users.find(us => us.login === login)

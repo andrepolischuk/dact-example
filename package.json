@@ -21,6 +21,7 @@
   "dependencies": {
     "bel": "^4.5.1",
     "dact": "^0.3.0",
+    "dact-log": "^0.1.0",
     "isomorphic-fetch": "^2.2.1",
     "nanomorph": "^4.0.2"
   },

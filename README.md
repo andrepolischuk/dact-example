@@ -31,6 +31,7 @@ npm run build
 ## Under the hood
 
 * [dact](https://github.com/andrepolischuk/dact)
+* [dact log](https://github.com/andrepolischuk/dact-log)
 * [bel](https://github.com/shama/bel)
 * [nanomorph](https://github.com/yoshuawuyts/nanomorph)
 * [webpack](https://github.com/webpack/webpack)
