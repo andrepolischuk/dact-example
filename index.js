@@ -94,12 +94,8 @@ function app (state, emit) {
 }
 
 const root = document.getElementById('root')
+let tree = root.appendChild(app(data.state, data.emit))
 
 data.subscribe(() => {
-  const tree = root.lastChild
-  const nextTree = app(data.state, data.emit)
-
-  root.replaceChild(morph(tree, nextTree), tree)
+  tree = morph(tree, app(data.state, data.emit))
 })
-
-root.appendChild(app(data.state, data.emit))
